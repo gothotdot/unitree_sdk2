@@ -37,7 +37,24 @@ int main(int argc, char** argv) {
         for (int i = 0; i < 30 && g_running.load(); ++i) {
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
+        int32_t set_volume=client.SetVolume(50);
+        if (set_volume == 0) {
+            std::cout << "Forward move command accepted!" << std::endl;
+        } else {
+            std::cerr << "Forward move failed. Error: " << set_volume << std::endl;
+        }
 
+        int32_t speaker=client.TtsMaker("hello", 1);
+        if (speaker == 0) {
+            std::cout << "Forward move command accepted!" << std::endl;
+        } else {
+            std::cerr << "Forward move failed. Error: " << speaker << std::endl;
+        }
+
+        for (int i = 0; i < 30 && g_running.load(); ++i) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+        
         int32_t backer = client.Move(-1.0f, 0.0f, 0.0f);
         if (backer == 0) {
             std::cout << "Backward move command accepted!" << std::endl;
