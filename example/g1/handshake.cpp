@@ -2,6 +2,8 @@
 #include <thread>
 #include <chrono>
 #include <unitree/robot/go2/sport/sport_client.hpp>
+#include <unitree/robot/g1/arm/g1_arm_action_client.hpp>
+#include <unitree/robot/g1/arm/g1_arm_action_api.hpp>
 
 int main(int argc, char** argv) {
     const char* iface = (argc > 1) ? argv[1] : "eth0"; // fallback
@@ -46,7 +48,11 @@ int main(int argc, char** argv) {
     } else {
         std::cerr << "Failed to trigger backing. Error code: " << backer << std::endl;
     }
-
+    //int32_t id=26;
+    for(int x=0;x<28;++x){
+        int32_t wv1=client.ExecuteAction(id) //should be another way to wave hand?
+    sleep(30);
+    }    
     std::this_thread::sleep_for(std::chrono::seconds(3));
     return 0;
 }
