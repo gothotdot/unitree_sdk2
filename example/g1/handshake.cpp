@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 
     std::cout << "Sending High-Level Wave Command via C++..." << std::endl;
 
-    int32_t result = client.WaveHand();
+    int32_t result = client.hello();
     if (result == 0) {
         std::cout << "Wave command accepted successfully!" << std::endl;
     } else {
@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     std::this_thread::sleep_for(std::chrono::seconds(4));
 
     // Second wave
-    int32_t result2 = client.WaveHand();
+    int32_t result2 = client.hello();
     if (result2 == 0) {
         std::cout << "2nd wave command accepted successfully!" << std::endl;
     } else {
